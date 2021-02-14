@@ -1,3 +1,8 @@
+"""Scikit-learn wrapper interface for LGBMRanker."""
+
+from .model import LGBMModel
+
+
 class LGBMRanker(LGBMModel):
     """LightGBM ranker."""
 

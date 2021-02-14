@@ -1,3 +1,9 @@
+"""Scikit-learn wrapper interface for LGBMRegressor."""
+
+from ..compat import _LGBMRegressorBase
+from .model import LGBMModel
+
+
 class LGBMRegressor(LGBMModel, _LGBMRegressorBase):
     """LightGBM regressor."""
 

@@ -1,3 +1,19 @@
+"""Scikit-learn wrapper interface for LGBMClassifier."""
+
+import numpy as np
+
+from ..basic import _log_warning
+from ..compat import (
+    LGBMNotFittedError,
+    _LGBMAssertAllFinite,
+    _LGBMCheckClassificationTargets,
+    _LGBMClassifierBase,
+    _LGBMLabelEncoder,
+)
+from .doc import _lgbmmodel_doc_predict
+from .model import LGBMModel
+
+
 class LGBMClassifier(LGBMModel, _LGBMClassifierBase):
     """LightGBM classifier."""
 

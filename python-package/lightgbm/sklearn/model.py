@@ -5,30 +5,24 @@ from inspect import signature
 
 import numpy as np
 
-from .basic import (
-    Dataset,
-    LightGBMError,
-    _choose_param_value,
-    _ConfigAliases,
-    _log_warning,
-)
-from .compat import (
+from ..basic import Dataset, LightGBMError, _choose_param_value, _ConfigAliases
+from ..compat import (
     SKLEARN_INSTALLED,
     LGBMNotFittedError,
-    _LGBMAssertAllFinite,
     _LGBMCheckArray,
-    _LGBMCheckClassificationTargets,
     _LGBMCheckSampleWeight,
     _LGBMCheckXY,
-    _LGBMClassifierBase,
     _LGBMComputeSampleWeight,
-    _LGBMLabelEncoder,
     _LGBMModelBase,
-    _LGBMRegressorBase,
     dt_DataTable,
     pd_DataFrame,
 )
-from .engine import train
+from ..engine import train
+from .doc import (
+    _lgbmmodel_doc_custom_eval_note,
+    _lgbmmodel_doc_fit,
+    _lgbmmodel_doc_predict,
+)
 
 
 class LGBMModel(_LGBMModelBase):
