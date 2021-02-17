@@ -1180,6 +1180,11 @@ class Dataset:
             return self
         self.set_init_score(init_score)
 
+    def _get_args_names(self):
+        co_varnames = getattr(self.__class__, "_lazy_init").__code__.co_varnames
+        co_argcount = getattr(self.__class__, "_lazy_init").__code__.co_argcount
+        return co_varnames[:co_argcount]
+
     def _lazy_init(self, data, label=None, reference=None,
                    weight=None, group=None, init_score=None, predictor=None,
                    silent=False, feature_name='auto',
@@ -1198,9 +1203,9 @@ class Dataset:
 
         # process for args
         params = {} if params is None else params
-        args_names = (getattr(self.__class__, '_lazy_init')
-                      .__code__
-                      .co_varnames[:getattr(self.__class__, '_lazy_init').__code__.co_argcount])
+
+        args_names = _get_arg_names()
+
         for key, _ in params.items():
             if key in args_names:
                 _log_warning('{0} keyword has been found in `params` and will be ignored.\n'
